@@ -4,7 +4,7 @@ from google.adk.agents import Agent
 from google.adk.tools import google_search
 from google.adk.tools.agent_tool import AgentTool
 
-from .sub_agents.paper_agent.agent import paper_agent
+#from .sub_agents.paper_agent.agent import paper_agent
 
 def get_current_time() -> dict:
     '''Get the current time in the format YYYY-MM-DD HH:MM:SS of India timezone'''
@@ -55,7 +55,7 @@ root_agent = Agent(
     - zip_tool_agent to create ZIP files from code files.
     """,
     tools=[
-        AgentTool(paper_agent),
+        #AgentTool(paper_agent),
         google_search,
         zip_tool_agent,  # Added ZIP file creation tool
     ],

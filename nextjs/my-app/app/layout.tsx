@@ -1,35 +1,22 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
+import './globals.css';
+import Navbar from '../app/components/navbar';
+import Footer from '../app/components/footer';
+import { Inter } from 'next/font/google';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Agent Website",
-  description: "Modern agent web app with dark theme.",
+export const metadata = {
+  title: 'AI ChatApp',
+  description: 'Next.js + FastAPI Gemini powered AI chat application.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`} // No need for style={{colorScheme: "dark"}}
-    >
-      <body className="antialiased font-sans bg-gray-950 text-white transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <Navbar />
+        <main className="flex-1 px-6 py-8">{children}</main>
+        <Footer />
       </body>
     </html>
   );
